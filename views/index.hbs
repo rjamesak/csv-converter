@@ -1,16 +1,23 @@
 <h1>{{title}}</h1>
-<p>Welcome to {{title}}, {{name}} </p>
-<p>Your name is {{name}} </p>
+<p>Welcome to {{title}}, by {{name}} </p>
+<p>
+    Choose a csv file, then click submit. The JSON will be returned in the text box below.
+</p>
 <form>
-  <label for="csv">Choose a file:</label><br>
+  <label for="csv">Select a CSV file:</label><br>
 
 <input type="file"
        id="csv-upload" name="csv"
        accept=".csv">
-  <button type="button" id="btn"> submit</button>
+  <button type="button" id="btn"> Upload CSV file</button>
 
 </form>
 
-<div id="json-display">
+<textarea id="json-display">
 
-</div>
+</textarea>
+<button type="button" id="copy-btn">copy</button>
+<footer>
+    I am using the csvtojson library found 
+    <a href="https://www.npmjs.com/package/csvtojson" target="blank">here</a>
+</footer>

@@ -6,8 +6,8 @@ const csvtojson = require('csvtojson')
 router.get('/', function (req, res, next) {
   console.log('getting home page')
   let context = {}
-  context.title = 'Express'
-  context.name = 'Russell'
+  context.title = 'CSV to JSON Converter'
+  context.name = 'Russell James'
   res.render('index', context);
 });
 

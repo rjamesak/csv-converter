@@ -21,6 +21,17 @@ document.querySelector("#btn").addEventListener("click", ((e) => {
     }
 }))
 
+document.querySelector("#copy-btn").addEventListener("click", () => {
+    // get text from json-display div
+    let jsonText = document.getElementById("json-display").select()
+    // copy to clipboard https://www.codegrepper.com/code-examples/html/how+to+give+auto+copy+by+click+with+html
+    // jsonText.select()
+    document.execCommand("copy")
+    console.log('copied json text')
+
+})
+
+// SUBMIT csv file to converter
 function postFile(file) {
     console.log('posting file:', file)
     axios({
@@ -31,7 +42,9 @@ function postFile(file) {
     })
         .then((response) => {
             console.log(response)
-            document.querySelector("#json-display").textContent = response.data.convertedJson
+            console.log(response.data.data.convertedJson)
+            // document.querySelector("#json-display").textContent = JSON.stringify(response.data.data.convertedJson)
+            document.querySelector("#json-display").value = JSON.stringify(response.data.data.convertedJson)
         })
         .catch((error) => {
             console.log(error)
