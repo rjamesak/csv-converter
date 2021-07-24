@@ -11,8 +11,9 @@ document.querySelector("#btn").addEventListener("click", ((e) => {
     // send the file
     if (csv) {
         let formData = new FormData()
-        formData.append('csv', csv)
+        formData.append('csv', csv, csv.name)
         // postFile(csv)
+        console.log('formData:', formData)
         postFile(formData)
     }
     else {
@@ -25,7 +26,7 @@ function postFile(file) {
     axios({
         method: "post",
         url: apiUrl,
-        data: bodyFormData,
+        data: file,
         headers: { "Content-Type": "multipart/form-data" },
     })
         .then((response) => {
