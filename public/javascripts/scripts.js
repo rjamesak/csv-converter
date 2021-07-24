@@ -31,6 +31,7 @@ function postFile(file) {
     })
         .then((response) => {
             console.log(response)
+            document.querySelector("#json-display").textContent = response.data.convertedJson
         })
         .catch((error) => {
             console.log(error)
