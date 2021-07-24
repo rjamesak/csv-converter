@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const csvtojson = require('csvtojson')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -21,19 +22,28 @@ router.post('/upload-csv', async (req, res) => {
     }
     else {
       // use name of input field to get uploaded file
-      let csvFile = req.files.csvFile
-      console.log(csvFile)
-      csvFile.mv('./public/uploads/' + csvFile.name)
+      let csv = req.files.csv
+      console.log(csv)
+      // move to uploads folder
+      csv.mv('./public/uploads/' + csv.name)
+
+      await csvtojson()
+        .fromFile('./public/uploads/' + csv.name)
+        .then((jsonObj) => {
+          console.log('jsonObj:', jsonObj)
+          res.send({
+            status: true,
+            message: 'File is uploaded',
+            data: {
+              name: csv.name,
+              mimetype: csv.mimetype,
+              size: csv.size,
+              convertedJson: jsonObj
+            } // end data
+          }) // end send
+        })
+
       // send response
-      res.send({
-        status: true,
-        message: 'File is uploaded',
-        data: {
-          name: csvFile.name,
-          mimetype: csvFile.mimetype,
-          size: csvFile.size
-        }
-      })
     } // end else
   } // end try
   catch (err) {
