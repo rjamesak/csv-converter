@@ -18,7 +18,7 @@ document.querySelector("#btn").addEventListener("click", ((e) => {
 }))
 
 function postFile(file) {
-    console.log('posting file')
+    console.log('posting file:', file)
     axios.post(apiUrl, file)
         .then((response) => {
             console.log(response)
