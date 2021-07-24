@@ -10,7 +10,10 @@ document.querySelector("#btn").addEventListener("click", ((e) => {
     console.log('clicked!', e)
     // send the file
     if (csv) {
-        postFile(csv)
+        let formData = new FormData()
+        formData.append('csv', csv)
+        // postFile(csv)
+        postFile(formData)
     }
     else {
         console.log('no csv')
@@ -19,7 +22,12 @@ document.querySelector("#btn").addEventListener("click", ((e) => {
 
 function postFile(file) {
     console.log('posting file:', file)
-    axios.post(apiUrl, file)
+    axios({
+        method: "post",
+        url: apiUrl,
+        data: bodyFormData,
+        headers: { "Content-Type": "multipart/form-data" },
+    })
         .then((response) => {
             console.log(response)
         })
