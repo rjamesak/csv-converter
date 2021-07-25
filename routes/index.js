@@ -12,6 +12,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/upload-csv', async (req, res) => {
+  // with help from this blog: https://attacomsian.com/blog/uploading-files-nodejs-express
   console.log('received request to upload')
   try {
     if (!req.files) {
