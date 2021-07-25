@@ -40,3 +40,5 @@ axios({
 
 When launched, a gui is available at the home route '/'
 ![gui screen](/public/images/guiScreenShot.jpg "app gui interface")
+
+Here you can choose a csv, upload it, and the returned JSON will be displayed in the text area.
