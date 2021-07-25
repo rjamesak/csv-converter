@@ -35,3 +35,8 @@ axios({
     console.log(error);
   });
 ```
+
+## GUI
+
+When launched, a gui is available at the home route '/'
+![gui screen](/public/images/guiScreenShot.jpg "app gui interface")
