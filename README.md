@@ -16,4 +16,22 @@ The '/upload-csv' route has been configured to accept a csv file and return a js
 
 ### example api code
 
-`axios({ method: "post", url: apiUrl, data: file, headers: { "Content-Type": "multipart/form-data" }, }) .then((response) => { console.log(response) console.log(response.data.data.convertedJson) // document.querySelector("#json-display").textContent = JSON.stringify(response.data.data.convertedJson) document.querySelector("#json-display").value = JSON.stringify(response.data.data.convertedJson) }) .catch((error) => { console.log(error) })`
+```javascript
+axios({
+  method: "post",
+  url: apiUrl,
+  data: file,
+  headers: { "Content-Type": "multipart/form-data" },
+})
+  .then((response) => {
+    // log response
+    console.log(response.data.data.convertedJson);
+    // add response to html text or textarea tag
+    document.querySelector("#json-display").value = JSON.stringify(
+      response.data.data.convertedJson
+    );
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
